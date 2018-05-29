@@ -31,8 +31,16 @@ def euclide(dividende, diviser):
     return [reste, dividende, diviser, quotient]
 
 #Calcule de bezout
-def bezout():
-    pass
+def bezout(a,b):
+    r, u, v = a, 1, 0
+    rp, up, vp = b, 0, 1
+    while rp != 0:
+        q = r//rp
+        rs, us, vs = r, u, v
+        r, u, v = rp, up, vp
+        rp, up, vp = (rs - q*rp), (us - q*up), (vs - q*vp)
+    print('u = ',v)
+    print('v = ',u)
 
 def main(argv):
     #Message d'accueil
@@ -48,6 +56,7 @@ def main(argv):
 
     if(pgcd(dividende, diviser) == 1):
         print('premier entre eux')
+        bezout(dividende, diviser)
     else:
         print('nope')
 
